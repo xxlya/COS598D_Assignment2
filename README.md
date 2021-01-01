@@ -1,14 +1,10 @@
 # XNOR-Net-Pytorch
-This a PyTorch implementation of the [XNOR-Net](https://github.com/allenai/XNOR-Net). I implemented Binarized Neural Network (BNN) for:  
+This a PyTorch implementation of the XNOR-Net[1] (https://github.com/allenai/XNOR-Net) and folked from https://github.com/jiecaoyu/XNOR-Net-PyTorch. 
 
-| Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
-|----------|:-------------------------|:----------------------------|:---------------------------|
-| MNIST    | LeNet-5                  | 99.23%                      | 99.34%                     |
-| CIFAR-10 | Network-in-Network (NIN) | 86.28%                      | 89.67%                     |
-| ImageNet | AlexNet                  | Top-1: 44.87% Top-5: 69.70% | Top-1: 57.1% Top-5: 80.2%  |
+[1] Rastegari, M., Ordonez, V., Redmon, J. and Farhadi, A., 2016, October. Xnor-net: Imagenet classification using binary convolutional neural networks. In European conference on computer vision (pp. 525-542). Springer, Cham.
 
-## MNIST
-I implemented the LeNet-5 structure for the MNIST dataset. I am using the dataset reader provided by [torchvision](https://github.com/pytorch/vision). To run the training:
+## How to run
+To run the training on MNIST using LeNet-5:
 ```bash
 $ cd <Repository Root>/MNIST/
 $ python main.py
@@ -19,47 +15,10 @@ $ cp <Pretrained Model> <Repository Root>/MNIST/models/
 $ python main.py --pretrained models/LeNet_5.best.pth.tar --evaluate
 ```
 
-## CIFAR-10
-I implemented the NIN structure for the CIFAR-10 dataset. You can download the training and validation datasets [here](https://drive.google.com/open?id=0B-7I62GOSnZ8Z0ZCVXFtVnFEaTg) and uncompress the .zip file. To run the training:
-```bash
-$ cd <Repository Root>/CIFAR_10/
-$ ln -s <Datasets Root> data
-$ python main.py
-```
-Pretrained model can be downloaded [here](https://drive.google.com/open?id=0B-7I62GOSnZ8UjJqNnR1V0dMbWs). To evaluate the pretrained model:
-```bash
-$ cp <Pretrained Model> <Repository Root>/CIFAR_10/models/
-$ python main.py --pretrained models/nin.best.pth.tar --evaluate
-```
-
-## ImageNet
-I implemented the AlexNet for the ImageNet dataset.
-### Dataset
-
-The training supports [torchvision](https://github.com/pytorch/vision).
-
-If you have installed [Caffe](https://github.com/BVLC/caffe), you can download the preprocessed dataset [here](https://drive.google.com/uc?export=download&id=0B-7I62GOSnZ8aENhOEtESVFHa2M) and uncompress it. 
-To set up the dataset:
-```bash
-$ cd <Repository Root>/ImageNet/networks/
-$ ln -s <Datasets Root> data
-```
-
-### AlexNet
-To train the network:
-```bash
-$ cd <Repository Root>/ImageNet/networks/
-$ python main.py # add "--caffe-data" if you are training with the Caffe dataset
-```
-The pretrained models can be downloaded here: [pretrained with Caffe dataset](https://drive.google.com/open?id=0B-7I62GOSnZ8bUtZUXdZLVBtUDQ); [pretrained with torchvision](https://drive.google.com/open?id=1NiVSo3K4c_kcRP10bUCirjHX5_pvylNb). To evaluate the pretrained model:
-```bash
-$ cp <Pretrained Model> <Repository Root>/ImageNet/networks/
-$ python main.py --resume alexnet.baseline.pth.tar --evaluate # add "--caffe-data" if you are training with the Caffe dataset
-```
-The training log can be found here: [log - Caffe dataset](https://raw.githubusercontent.com/jiecaoyu/XNOR-Net-PyTorch/master/ImageNet/networks/log.baseline); [log - torchvision](https://github.com/jiecaoyu/XNOR-Net-PyTorch/blob/master/ImageNet/networks/log.pytorch.wd_3e-6).
-
-## Todo
-- NIN for ImageNet.
+## Please fill the resutls table
+| Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
+|----------|:-------------------------|:----------------------------|:---------------------------|
+| MNIST    | LeNet-5                  |                      |                   |
 
 ## Notes
 ### Gradients of scaled sign function
