@@ -15,12 +15,13 @@ $ cp <Pretrained Model> <Repository Root>/MNIST/models/
 $ python main.py --pretrained models/LeNet_5.best.pth.tar --evaluate
 ```
 
-## Please fill the resutls table
+##TO DO
+### 1. Please fill the resutls table
 | Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet-5                  |                      |                   |
 
-## Please show how the variations on number of channels and filter size will affect speedup.
+### 2. Please show how the variations on number of channels and filter size will affect speedup.
 Please refer to Fig.4(b-c) in the original paper.
 
 ## Notes
