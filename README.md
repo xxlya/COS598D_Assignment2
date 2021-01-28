@@ -20,6 +20,9 @@ $ python main.py --pretrained models/LeNet_5.best.pth.tar --evaluate
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet-5                  |                      |                   |
 
+## Please show how the variations on number of channels and filter size will affect speedup.
+Please refer to Fig.4(b-c) in the original paper.
+
 ## Notes
 ### Gradients of scaled sign function
 In the paper, the gradient in backward after the scaled sign function is  
