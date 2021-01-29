@@ -32,14 +32,17 @@ However, this equation is actually inaccurate. The correct backward gradient sho
 
 Details about this correction can be found in the [notes](notes/notes.pdf) (section 1).
 
-## 2. Implemente  
+## 2. Implemente `updateBinaryGradWeight` function in `util.py'.
+Please follow the notes
 
 ## 3. Record results and discussion
-### Please fill the resutls table
+***3.1 Please fill the resutls table***
 
 | Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet-5                  |                      |                   |
 
-- [ ] Please show how the variations on number of channels and filter size will affect speedup.
+***3.2 Hyper-parameters***
+Please show how the variations on number of channels and filter size will affect speedup.
 Please refer to Fig.4(b-c) in the original paper.
+***3.3 Discuss your results***
