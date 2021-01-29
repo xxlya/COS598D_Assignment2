@@ -1,5 +1,5 @@
 # XNOR-Net-Pytorch
-This a PyTorch implementation of the XNOR-Net[1] (https://github.com/allenai/XNOR-Net) and folked from https://github.com/jiecaoyu/XNOR-Net-PyTorch. 
+You are required to learn how to implemente the gradient calculation of the XNOR-Net[1] (https://github.com/allenai/XNOR-Net). 
 
 [1] Rastegari, M., Ordonez, V., Redmon, J. and Farhadi, A., 2016, October. Xnor-net: Imagenet classification using binary convolutional neural networks. In European conference on computer vision (pp. 525-542). Springer, Cham.
 
