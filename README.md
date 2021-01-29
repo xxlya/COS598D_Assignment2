@@ -15,16 +15,8 @@ $ cp <Pretrained Model> <Repository Root>/MNIST/models/
 $ python main.py --pretrained models/LeNet_5.best.pth.tar --evaluate
 ```
 
-## TO DO
-### 1. Please fill the resutls table
-| Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
-|----------|:-------------------------|:----------------------------|:---------------------------|
-| MNIST    | LeNet-5                  |                      |                   |
-
-### 2. Please show how the variations on number of channels and filter size will affect speedup.
-Please refer to Fig.4(b-c) in the original paper.
-
-## Notes
+## Your Tasks
+## 1. Read the Notes
 ### Gradients of scaled sign function
 In the paper, the gradient in backward after the scaled sign function is  
   
@@ -39,3 +31,14 @@ However, this equation is actually inaccurate. The correct backward gradient sho
 ![equation](https://latex.codecogs.com/gif.latex?%5Cfrac%7B%5Cpartial%20C%7D%7B%5Cpartial%20W_%7Bi%7D%7D%20%3D%20%5Cfrac%7B1%7D%7Bn%7D%20%5Ccdot%20sign%28W_%7Bi%7D%29%20%5Ccdot%20%5Csum_%7Bj%3D1%7D%5E%7Bn%7D%5B%5Cfrac%7B%5Cpartial%20C%7D%7B%5Cpartial%20%5Cwidetilde%7BW%7D_j%7D%20%5Ccdot%20sign%28W_j%29%5D%20&plus;%20%5Cfrac%7B%5Cpartial%20C%7D%7B%5Cpartial%20%5Cwidetilde%7BW%7D_i%7D%20%5Ccdot%20%5Cfrac%7Bsign%28W_i%29%7D%7BW_i%7D%20%5Ccdot%20%5Calpha)
 
 Details about this correction can be found in the [notes](notes/notes.pdf) (section 1).
+
+## 2. Implemente  
+
+## 3. Record results and discussion
+- [ ] Please fill the resutls table
+| Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
+|----------|:-------------------------|:----------------------------|:---------------------------|
+| MNIST    | LeNet-5                  |                      |                   |
+
+- [ ] Please show how the variations on number of channels and filter size will affect speedup.
+Please refer to Fig.4(b-c) in the original paper.
