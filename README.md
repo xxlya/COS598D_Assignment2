@@ -32,7 +32,7 @@ However, this equation is actually inaccurate. The correct backward gradient sho
 
 Details about this correction can be found in the [notes](notes/notes.pdf) (section 1).
 
-## 2. Implemente `updateBinaryGradWeight` function in `util.py'.
+## 2. Implemente `updateBinaryGradWeight` function in `util.py`.
 Please follow the notes to implement weights gradient calucation. 
 
 ## 3. Record results and discussion
