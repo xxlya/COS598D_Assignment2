@@ -35,7 +35,8 @@ Details about this correction can be found in the [notes](notes/notes.pdf) (sect
 ## 2. Implemente  
 
 ## 3. Record results and discussion
-- [ ] Please fill the resutls table\
+### Please fill the resutls table
+
 | Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet-5                  |                      |                   |
