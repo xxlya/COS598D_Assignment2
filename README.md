@@ -33,7 +33,7 @@ However, this equation is actually inaccurate. The correct backward gradient sho
 Details about this correction can be found in the [notes](notes/notes.pdf) (section 1).
 
 ## 2. Implemente `updateBinaryGradWeight` function in `util.py'.
-Please follow the notes
+Please follow the notes to implement weights gradient calucation. 
 
 ## 3. Record results and discussion
 ***3.1 Please fill the resutls table***
@@ -43,6 +43,7 @@ Please follow the notes
 | MNIST    | LeNet-5                  |                      |                   |
 
 ***3.2 Hyper-parameters***
+
 Please show how the variations on number of channels and filter size will affect speedup.
 Please refer to Fig.4(b-c) in the original paper.
 
