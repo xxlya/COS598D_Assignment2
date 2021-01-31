@@ -44,7 +44,7 @@ Please follow the notes to implement weights gradient calucation.
 
 | Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
 |----------|:-------------------------|:----------------------------|:---------------------------|
-| Cifar    | VGG                 |                      |                   |
+| Cifar10    | VGG                 |                      |                   |
 
 ***3.2 Hyper-parameters***
 
