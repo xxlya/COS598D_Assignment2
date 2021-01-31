@@ -47,6 +47,7 @@ list as tables
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | ResNet18               |                      |                   |
 | Cifar10  | ResNet18                |                      |                   |
+
 ***3.2 Hyper-parameters***
 
 Please show how the variations on number of channels and filter size will affect speedup.
