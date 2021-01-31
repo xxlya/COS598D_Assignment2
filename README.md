@@ -52,3 +52,4 @@ Please show how the variations on number of channels and filter size will affect
 Please refer to Fig.4(b-c) in the original paper.
 
 ***3.3 Discuss your results***
+Submit a reports (specified)
