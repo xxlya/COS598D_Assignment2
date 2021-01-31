@@ -42,7 +42,7 @@ Save Memory footprint
 Compare With Valina Networks
 | Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
 |----------|:-------------------------|:----------------------------|:---------------------------|
-| MNIST    | LeNet-5                  |                      |                   |
+| Cifar    | VGG                 |                      |                   |
 
 ***3.2 Hyper-parameters***
 
