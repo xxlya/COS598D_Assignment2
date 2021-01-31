@@ -37,6 +37,7 @@ Please follow the notes to implement weights gradient calucation.
 
 ## 3. Report results and discussion
 ***3.1 Please fill the resutls table***
+list as tables 
 
 -[ ] Save Memory Footprint
 -[ ] Compare With Valina Training
@@ -44,8 +45,9 @@ Please follow the notes to implement weights gradient calucation.
 
 | Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
 |----------|:-------------------------|:----------------------------|:---------------------------|
-| Cifar10    | VGG                 |                      |                   |
-
+| MNIST    | ResNet18               |                      |                   |
+|----------|:-------------------------|:----------------------------|:---------------------------|
+| Cifar10  | ResNet18                |                      |                   |
 ***3.2 Hyper-parameters***
 
 Please show how the variations on number of channels and filter size will affect speedup.
