@@ -36,7 +36,8 @@ Details about this correction can be found in the [notes](notes/notes.pdf) (sect
 Please follow the notes to implement weights gradient calucation. 
 
 ## 3. Report results and discussion
-***3.1 Please fill the resutls table***
+***3.1 Please fill the resutls table***\
+
 Save Memory footprint
 Compare With Valina Networks
 | Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
