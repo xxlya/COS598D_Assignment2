@@ -38,9 +38,9 @@ Please follow the notes to implement weights gradient calucation.
 ## 3. Report results and discussion
 ***3.1 Please fill the resutls table***
 
--- [ ] Save Memory Footprint
--- [ ] Compare With Valina Training
--- [ ] Record Running Time
+-[ ] Save Memory Footprint
+-[ ] Compare With Valina Training
+-[ ] Record Running Time
 
 | Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
 |----------|:-------------------------|:----------------------------|:---------------------------|
