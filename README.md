@@ -35,7 +35,7 @@ Details about this correction can be found in the [notes](notes/notes.pdf) (sect
 ## 2. Implemente `updateBinaryGradWeight` function in `util.py`.
 Please follow the notes to implement weights gradient calucation. 
 
-## 3. Record results and discussion
+## 3. Report results and discussion
 ***3.1 Please fill the resutls table***
 
 | Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
