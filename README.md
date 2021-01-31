@@ -55,3 +55,5 @@ Please refer to Fig.4(b-c) in the original paper.
 
 ***3.3 Discuss your results***
 Submit a reports (specified)
+
+Pruning on binarized nn
