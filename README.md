@@ -37,15 +37,32 @@ Please follow the notes to implement weights gradient calucation.
 
 ## 3. Report results and discussion
 ***3.1 Please fill the resutls table***
-list as tables 
 
--[ ] Save Memory Footprint
--[ ] Compare With Valina Training
--[ ] Record Running Time
+***Compare Model Accuracy***
 
-| Dataset  | Network                  | Accuracy                    | Accuracy of floating-point |
+| Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
 |----------|:-------------------------|:----------------------------|:---------------------------|
-| MNIST    | ResNet18               |                      |                   |
+| MNIST    | LeNet5              |                      |                   |
+| Cifar10  | ResNet18                |                      |                   |
+
+***Compare Memery Comsumption***
+| Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
+|----------|:-------------------------|:----------------------------|:---------------------------|
+| MNIST    | LeNet5              |                      |                   |
+| Cifar10  | ResNet18                |                      |                   |
+
+
+***Compare Model Training Time***
+| Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
+|----------|:-------------------------|:----------------------------|:---------------------------|
+| MNIST    | LeNet5              |                      |                   |
+| Cifar10  | ResNet18                |                      |                   |
+
+
+***Compare Model Inference Time***
+| Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
+|----------|:-------------------------|:----------------------------|:---------------------------|
+| MNIST    | LeNet5              |                      |                   |
 | Cifar10  | ResNet18                |                      |                   |
 
 ***3.2 Hyper-parameters***
@@ -54,6 +71,7 @@ Please show how the variations on number of channels and filter size will affect
 Please refer to Fig.4(b-c) in the original paper.
 
 ***3.3 Discuss your results***
-Submit a reports (specified)
+Submit a report to describe the results in 3.2 and 3.3. Analyze the advangetages and limitations of XNOR-NET.
 
-Pruning on binarized nn
+## Suggestions on the final project
+- [ ] Pruning on XOR.
