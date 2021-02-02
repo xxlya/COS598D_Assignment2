@@ -37,7 +37,7 @@ To run the training on MNIST using LeNet-5:
 $ cd <Repository Root>/MNIST/
 $ python main.py
 ```
-Pretrained model can be downloaded [here](https://drive.google.com/open?id=0B-7I62GOSnZ8R3Jzd0ozdzlJUk0). To evaluate the pretrained model:
+You can validate your result with the pretrained model. Pretrained model can be downloaded [here](https://drive.google.com/open?id=0B-7I62GOSnZ8R3Jzd0ozdzlJUk0). To evaluate the pretrained model:
 ```bash
 $ cp <Pretrained Model> <Repository Root>/MNIST/models/
 $ python main.py --pretrained models/LeNet_5.best.pth.tar --evaluate
