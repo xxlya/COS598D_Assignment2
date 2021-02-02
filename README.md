@@ -3,18 +3,6 @@ You are required to learn how to implemente the gradient calculation of the XNOR
 
 [1] Rastegari, M., Ordonez, V., Redmon, J. and Farhadi, A., 2016, October. Xnor-net: Imagenet classification using binary convolutional neural networks. In European conference on computer vision (pp. 525-542). Springer, Cham.
 
-## How to run
-To run the training on MNIST using LeNet-5:
-```bash
-$ cd <Repository Root>/MNIST/
-$ python main.py
-```
-Pretrained model can be downloaded [here](https://drive.google.com/open?id=0B-7I62GOSnZ8R3Jzd0ozdzlJUk0). To evaluate the pretrained model:
-```bash
-$ cp <Pretrained Model> <Repository Root>/MNIST/models/
-$ python main.py --pretrained models/LeNet_5.best.pth.tar --evaluate
-```
-
 ## Your Tasks
 ## 1. Read the Notes
 ### Gradients of scaled sign function
@@ -38,7 +26,22 @@ Please follow the notes to implement weights gradient calucation.
 ## 3. Report results and discussion
 ### 3.1 Please fill the resutls table
 
-You need to evaluate the efficiency and accuracy of binary convolution vs. standard convolution (floating-point). You will perform the evaluation on MNIST and Cifar10 datasets. You will evaluate LeNet5 for MNIST and ResNet18 for Cifar10. MNIST experiment is in `MNIST` folder. Cifar10 experiment is in `Cifar10` folder.
+You need to evaluate the efficiency and accuracy of binary convolution vs. standard convolution (floating-point). 
+
+You will perform the evaluation on MNIST and Cifar10 datasets. You will evaluate LeNet5 for MNIST and ResNet18 for Cifar10. MNIST experiment is in `MNIST` folder. Cifar10 experiment is in `CIFAR_10` folder. Here I show a example about how to run MNIST with LeNet5.
+
+***How to run***
+
+To run the training on MNIST using LeNet-5:
+```bash
+$ cd <Repository Root>/MNIST/
+$ python main.py
+```
+Pretrained model can be downloaded [here](https://drive.google.com/open?id=0B-7I62GOSnZ8R3Jzd0ozdzlJUk0). To evaluate the pretrained model:
+```bash
+$ cp <Pretrained Model> <Repository Root>/MNIST/models/
+$ python main.py --pretrained models/LeNet_5.best.pth.tar --evaluate
+```
 
 ***Compare Model Accuracy***
 
