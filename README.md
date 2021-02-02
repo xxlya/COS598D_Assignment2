@@ -23,6 +23,8 @@ Details about this correction can be found in the [notes](notes/notes.pdf) (sect
 ## 2. Implemente `updateBinaryGradWeight` function in `util.py`.
 Please follow the notes to implement weights gradient calucation. 
 
+You will implement the `updateBinaryGradWeight` for both `MNIST/util.py` and `CIFAR_10/util.py`. 
+
 ## 3. Report results and discussion
 ### 3.1 Please fill the resutls table
 
