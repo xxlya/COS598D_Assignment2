@@ -78,17 +78,9 @@ class BinOp():
             m[weight.lt(-1.0)] = 0 
             m[weight.gt(1.0)] = 0
             '''
-            Mask the following lines
+            Please implement gradient calculation 
             '''
-            m = m.mul(self.target_modules[index].grad.data)
-            m_add = weight.sign().mul(self.target_modules[index].grad.data)
-            if len(s) == 4:
-                m_add = m_add.sum(3, keepdim=True)\
-                        .sum(2, keepdim=True).sum(1, keepdim=True).div(n).expand(s)
-            elif len(s) == 2:
-                m_add = m_add.sum(1, keepdim=True).div(n).expand(s)
-            m_add = m_add.mul(weight.sign())
-            grad = m.add(m_add).mul(1.0-1.0/s[1]).mul(n)
+
             '''
             End here
             '''
