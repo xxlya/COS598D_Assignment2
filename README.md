@@ -36,7 +36,9 @@ Details about this correction can be found in the [notes](notes/notes.pdf) (sect
 Please follow the notes to implement weights gradient calucation. 
 
 ## 3. Report results and discussion
-***3.1 Please fill the resutls table***
+### 3.1 Please fill the resutls table
+
+You need to evaluate the efficiency and accuracy of binary convolution vs. standard convolution (floating-point).
 
 ***Compare Model Accuracy***
 
@@ -65,12 +67,12 @@ Please follow the notes to implement weights gradient calucation.
 | MNIST    | LeNet5              |                      |                   |
 | Cifar10  | ResNet18                |                      |                   |
 
-***3.2 Hyper-parameters***
+### 3.2 Hyper-parameters
 
 Please show how the variations on number of channels and filter size will affect speedup.
 Please refer to Fig.4(b-c) in the original paper.
 
-***3.3 Discuss your results***
+### 3.3 Discuss your results
 Submit a report to describe the results in 3.2 and 3.3. Analyze the advangetages and limitations of XNOR-NET.
 
 
