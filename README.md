@@ -38,7 +38,7 @@ Please follow the notes to implement weights gradient calucation.
 ## 3. Report results and discussion
 ### 3.1 Please fill the resutls table
 
-You need to evaluate the efficiency and accuracy of binary convolution vs. standard convolution (floating-point).
+You need to evaluate the efficiency and accuracy of binary convolution vs. standard convolution (floating-point). You will perform the evaluation on MNIST and Cifar10 datasets. You will evaluate LeNet5 for MNIST and ResNet18 for Cifar10. MNIST experiment is in `MNIST` folder. Cifar10 experiment is in `Cifar10` folder.
 
 ***Compare Model Accuracy***
 
