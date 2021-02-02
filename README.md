@@ -73,5 +73,4 @@ Please refer to Fig.4(b-c) in the original paper.
 ***3.3 Discuss your results***
 Submit a report to describe the results in 3.2 and 3.3. Analyze the advangetages and limitations of XNOR-NET.
 
-## Suggestions on the final project
-- [ ] Pruning on XOR.
+
