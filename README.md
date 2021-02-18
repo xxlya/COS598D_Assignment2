@@ -78,6 +78,6 @@ Please show how the variations on number of channels and filter size will affect
 Please refer to Fig.4(b-c) in the original paper.
 
 ### 3.3 Discuss your results
-Submit a report to describe the results in 3.2 and 3.3. Analyze the advangetages and limitations of XNOR-NET.
+Please describe the settings of your experiments. Please include the required results (described in 3.1 and 3.2). Please add captions to describe your figures and tables. Please analyze the advangetages and limitations of XNOR-NET. It would be best to write brief discussions on your results, such as the patterns (what and why), conclusions, and any observations you want to discuss. 
 
 
