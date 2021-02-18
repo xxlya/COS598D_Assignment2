@@ -96,7 +96,7 @@ class BinOp():
             Please implement the 1st term of gradient calculation 
             '''
             # Now we calculate m_add, which is defined as sign(W) multiple gradient
-            m_add = *** Put your code here *** 
+            m_add = *** Write your code here *** 
             
             # sum over all the weight entris
             if len(s) == 4:
@@ -106,8 +106,9 @@ class BinOp():
                 m_add = m_add.sum(1, keepdim=True).div(n).expand(s)
                 
             # Now we update m_add as sign(W) * m_add 
-            m_add = *** Put your code here *** 
+            m_add = *** Write your code here *** 
             '''
             End here
             ''
+            # Scale the 1st term, and add the 1st and 2nd terms.
             self.target_modules[index].grad.data = m.add(m_add).mul(1.0-1.0/s[1]).mul(n)
