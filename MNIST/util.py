@@ -68,8 +68,10 @@ class BinOp():
     def updateBinaryGradWeight(self):
         for index in range(self.num_of_params):
             weight = self.target_modules[index].data
-            n = weight[0].nelement()
+            n = weight[0].nelement() # n = c × w × h
             s = weight.size()
+            
+            # Now we calculate m, which is the alpha in our notes
             if len(s) == 4:
                 m = weight.norm(1, 3, keepdim=True)\
                         .sum(2, keepdim=True).sum(1, keepdim=True).div(n).expand(s)
@@ -77,11 +79,35 @@ class BinOp():
                 m = weight.norm(1, 1, keepdim=True).div(n).expand(s)
             m[weight.lt(-1.0)] = 0 
             m[weight.gt(1.0)] = 0
+            
+            # Now we calculate \partial C/ \partial \Tilde{W_i}
+            grad = self.target_modules[index].grad.data
+            
             '''
-            Please implement gradient calculation 
+            Please implement the 2nd term of gradient calculation 
             '''
-
+            # Now we update m as alpha * gradient 
+            m = *** Put your code here *** 
             '''
             End here
             '''
-            self.target_modules[index].grad.data = grad
+            
+            '''
+            Please implement the 1st term of gradient calculation 
+            '''
+            # Now we calculate m_add, which is defined as sign(W) multiple gradient
+            m_add = *** Put your code here *** 
+            
+            # sum over all the weight entris
+            if len(s) == 4:
+                m_add = m_add.sum(3, keepdim=True)\
+                        .sum(2, keepdim=True).sum(1, keepdim=True).div(n).expand(s)
+            elif len(s) == 2:
+                m_add = m_add.sum(1, keepdim=True).div(n).expand(s)
+                
+            # Now we update m_add as sign(W) * m_add 
+            m_add = *** Put your code here *** 
+            '''
+            End here
+            ''
+            self.target_modules[index].grad.data = m.add(m_add).mul(1.0-1.0/s[1]).mul(n)
