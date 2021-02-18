@@ -52,7 +52,7 @@ $ python main.py --pretrained models/LeNet_5.best.pth.tar --evaluate
 | MNIST    | LeNet5              |                      |                   |
 | Cifar10  | ResNet18                |                      |                   |
 
-***Compare Memery Comsumption***
+***Compare Memory Comsumption***
 | Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet5              |                      |                   |
