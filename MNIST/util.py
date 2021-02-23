@@ -77,6 +77,9 @@ class BinOp():
                         .sum(2, keepdim=True).sum(1, keepdim=True).div(n).expand(s)
             elif len(s) == 2:
                 m = weight.norm(1, 1, keepdim=True).div(n).expand(s)
+                
+            # Now we calcuate \partial sign(W_i)/ \partial \Tilde{W_i} * alpha. 
+            # Note that the following two lines make approximation on \partial sign(W_i)/ \partial \Tilde{W_i}.
             m[weight.lt(-1.0)] = 0 
             m[weight.gt(1.0)] = 0
             
