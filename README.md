@@ -34,12 +34,12 @@ You will perform the evaluation on MNIST and Cifar10 datasets. You will evaluate
 
 ***How to run***
 
-To run the training on MNIST using LeNet-5 using XORNet:
+To run the training on MNIST with LeNet-5 using XORNet scheme:
 ```bash
 $ cd <Repository Root>/MNIST/
 $ python main.py
 ```
-To run the training on MNIST using LeNet-5 using Vanilla setting:
+To run the training on MNIST with LeNet-5 using Vanilla scheme:
 ```bash
 $ cd <Repository Root>/MNIST/
 $ python main_vanilla.py
@@ -50,34 +50,47 @@ You can validate your result with the pretrained model. Pretrained model can be 
 $ cp <Pretrained Model> <Repository Root>/MNIST/models/
 $ python main.py --pretrained models/LeNet_5.best.pth.tar --evaluate
 ```
-To run the training on Cifar
+We run Cifar10 on Network in Network (NIN) [2].
+
+[2] Lin, M., Chen, Q., Yan, S.: Network in network. arXiv preprint arXiv:1312.4400 (2013) 
+
+To run the training on Cifar10 with NIN using XORNet scheme:
+```bash
+$ cd <Repository Root>/CIFAR_10/
+$ python main.py
+```
+To run the training on Cifar10 with NIN using Vanilla scheme:
+```bash
+$ cd <Repository Root>/CIFAR_10/
+$ python main_vanilla.py
+```
 
 ***Compare Model Accuracy***
 
 | Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet5              |                      |                   |
-| Cifar10  | ResNet18                |                      |                   |
+| Cifar10  | NIN               |                      |                   |
 
 ***Compare Memory Comsumption for the Trained Model***
 | Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet5              |                      |                   |
-| Cifar10  | ResNet18                |                      |                   |
+| Cifar10  | NIN                |                      |                   |
 
 
 ***Compare Model Training Time***
 | Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet5              |                      |                   |
-| Cifar10  | ResNet18                |                      |                   |
+| Cifar10  | NIN                |                      |                   |
 
 
 ***Compare Model Inference Time***
 | Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet5              |                      |                   |
-| Cifar10  | ResNet18                |                      |                   |
+| Cifar10  | NIN               |                      |                   |
 
 To track the runing time, you can use `timeit`. `pip intall timeit` if it has not been installed.
 ```
