@@ -24,7 +24,7 @@ def save_state(model, acc):
         if 'module' in key:
             state['state_dict'][key.replace('module.', '')] = \
                     state['state_dict'].pop(key)
-    torch.save(state, 'models/'+args.arch+'_vanilla.best.pth.tar')
+    torch.save(state, 'models/'+args.arch+'.best.pth.tar')
 
 def train(epoch):
     model.train()
@@ -103,8 +103,8 @@ if __name__=='__main__':
             help='random seed (default: 1)')
     parser.add_argument('--log-interval', type=int, default=100, metavar='N',
             help='how many batches to wait before logging training status')
-    parser.add_argument('--arch', action='store', default='LeNet_5',
-            help='the MNIST network structure: LeNet_5')
+    parser.add_argument('--arch', action='store', default='LeNet_5_vanilla',
+            help='the MNIST network structure: LeNet_5_vanilla')
     parser.add_argument('--pretrained', action='store', default=None,
             help='pretrained model')
     parser.add_argument('--evaluate', action='store_true', default=False,
@@ -135,8 +135,8 @@ if __name__=='__main__':
             batch_size=args.test_batch_size, shuffle=True, **kwargs)
     
     # generate the model
-    if args.arch == 'LeNet_5':
-        model = models.LeNet_5()
+    if args.arch == 'LeNet_5_vanilla':
+        model = models.LeNet_5_vanilla()
     else:
         print('ERROR: specified arch is not suppported')
         exit()
