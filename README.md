@@ -110,7 +110,7 @@ print('Time: ', stop - start)
 Please show how the variations on number of channels and filter size will affect speedup.
 Please refer to Fig.4(b-c) in the original paper.
 
-For simplicity, we this experiment is only requried to conduct on MNIST with LeNet5. Specifically:
+For simplicity, we conduct this experiment on MNIST with LeNet5 only. Specifically:
 
 Case 1: We fix all the filter size in the default setting. We change the number of channels of `self.bin_conv2` layer in `LeNet_5`. The default number of channels ***k*** is `50`. You need to record the spead up with `k \in [10, 30, 50, 128, 512, 1024]`.
 
