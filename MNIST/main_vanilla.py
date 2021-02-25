@@ -7,7 +7,6 @@ import torch.optim as optim
 import os
 import sys
 import models
-import util
 from torchvision import datasets, transforms
 from torch.autograd import Variable
 
@@ -25,7 +24,7 @@ def save_state(model, acc):
         if 'module' in key:
             state['state_dict'][key.replace('module.', '')] = \
                     state['state_dict'].pop(key)
-    torch.save(state, 'models/'+args.arch+'.best.pth.tar')
+    torch.save(state, 'models/'+args.arch+'_vanilla.best.pth.tar')
 
 def train(epoch):
     model.train()
