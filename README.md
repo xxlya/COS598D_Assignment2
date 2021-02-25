@@ -34,16 +34,23 @@ You will perform the evaluation on MNIST and Cifar10 datasets. You will evaluate
 
 ***How to run***
 
-To run the training on MNIST using LeNet-5:
+To run the training on MNIST using LeNet-5 using XORNet:
 ```bash
 $ cd <Repository Root>/MNIST/
 $ python main.py
 ```
+To run the training on MNIST using LeNet-5 using Vanilla setting:
+```bash
+$ cd <Repository Root>/MNIST/
+$ python main_vanilla.py
+```
+
 You can validate your result with the pretrained model. Pretrained model can be downloaded [here](https://drive.google.com/open?id=0B-7I62GOSnZ8R3Jzd0ozdzlJUk0). To evaluate the pretrained model:
 ```bash
 $ cp <Pretrained Model> <Repository Root>/MNIST/models/
 $ python main.py --pretrained models/LeNet_5.best.pth.tar --evaluate
 ```
+To run the training on Cifar
 
 ***Compare Model Accuracy***
 
