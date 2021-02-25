@@ -110,6 +110,15 @@ print('Time: ', stop - start)
 Please show how the variations on number of channels and filter size will affect speedup.
 Please refer to Fig.4(b-c) in the original paper.
 
+For simplicity, we this experiment is only requried to conduct on MNIST with LeNet5. Specifically:
+
+Case 1: We fix all the filter size in the default setting. We change the number of channels of `self.bin_conv2` layer in `LeNet_5`. The default number of channels ***k*** is `50`. You need to record the spead up with ***k*** \in [10, 30, 50, 128, 512, 1024].
+
+Case 2: We fix all the number of channels in the default setting. We change chage the filter size of `self.bin_conv2` layer in `LeNet_5`. The default filter size ***s*** is `5`.  You need to record the spead up with ***k*** \in [1, 2, 3, 4, 5, 6, 7, 8].
+
+Please change the input channle for `self.ip1` correspondingly. 
+
+
 ### 3.3 Discuss your results
 Please describe the settings of your experiments. Please include the required results (described in 3.1 and 3.2). Please add captions to describe your figures and tables. Please analyze the advangetages and limitations of XNOR-NET. It would be best to write brief discussions on your results, such as the patterns (what and why), conclusions, and any observations you want to discuss. 
 
