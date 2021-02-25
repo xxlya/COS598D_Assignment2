@@ -50,34 +50,36 @@ You can validate your result with the pretrained model. Pretrained model can be 
 $ cp <Pretrained Model> <Repository Root>/MNIST/models/
 $ python main.py --pretrained models/LeNet_5.best.pth.tar --evaluate
 ```
-To run the training on Cifar
+To run the training on Cifar on Network in Network (NIN) [2].
+
+[2] Lin, M., Chen, Q., Yan, S.: Network in network. arXiv preprint arXiv:1312.4400 (2013) 
 
 ***Compare Model Accuracy***
 
 | Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet5              |                      |                   |
-| Cifar10  | ResNet18                |                      |                   |
+| Cifar10  | NIN               |                      |                   |
 
 ***Compare Memory Comsumption for the Trained Model***
 | Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet5              |                      |                   |
-| Cifar10  | ResNet18                |                      |                   |
+| Cifar10  | NIN                |                      |                   |
 
 
 ***Compare Model Training Time***
 | Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet5              |                      |                   |
-| Cifar10  | ResNet18                |                      |                   |
+| Cifar10  | NIN                |                      |                   |
 
 
 ***Compare Model Inference Time***
 | Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
 |----------|:-------------------------|:----------------------------|:---------------------------|
 | MNIST    | LeNet5              |                      |                   |
-| Cifar10  | ResNet18                |                      |                   |
+| Cifar10  | NIN               |                      |                   |
 
 To track the runing time, you can use `timeit`. `pip intall timeit` if it has not been installed.
 ```
