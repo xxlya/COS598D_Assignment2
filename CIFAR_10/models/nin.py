@@ -40,8 +40,35 @@ class BinConv2d(nn.Module):
     
     def forward(self, x):
         x = self.bn(x)
-        x, mean = BinActive()(x)
+        x, mean = BinActive().apply(x)
         if self.dropout_ratio!=0:
+            x = self.dropout(x)
+        x = self.conv(x)
+        x = self.relu(x)
+        return x
+
+
+class VaConv2d(nn.Module):
+    def __init__(self, input_channels, output_channels,
+                 kernel_size=-1, stride=-1, padding=-1, dropout=0):
+        super(VaConv2d, self).__init__()
+        self.layer_type = 'VaConv2d'
+        self.kernel_size = kernel_size
+        self.stride = stride
+        self.padding = padding
+        self.dropout_ratio = dropout
+
+        self.bn = nn.BatchNorm2d(input_channels, eps=1e-4, momentum=0.1, affine=True)
+        self.bn.weight.data = self.bn.weight.data.zero_().add(1.0)
+        if dropout != 0:
+            self.dropout = nn.Dropout(dropout)
+        self.conv = nn.Conv2d(input_channels, output_channels,
+                              kernel_size=kernel_size, stride=stride, padding=padding)
+        self.relu = nn.ReLU(inplace=True)
+
+    def forward(self, x):
+        x = self.bn(x)
+        if self.dropout_ratio != 0:
             x = self.dropout(x)
         x = self.conv(x)
         x = self.relu(x)
@@ -65,6 +92,40 @@ class Net(nn.Module):
 
                 BinConv2d(192, 192, kernel_size=3, stride=1, padding=1, dropout=0.5),
                 BinConv2d(192, 192, kernel_size=1, stride=1, padding=0),
+                nn.BatchNorm2d(192, eps=1e-4, momentum=0.1, affine=False),
+                nn.Conv2d(192,  10, kernel_size=1, stride=1, padding=0),
+                nn.ReLU(inplace=True),
+                nn.AvgPool2d(kernel_size=8, stride=1, padding=0),
+                )
+
+    def forward(self, x):
+        for m in self.modules():
+            if isinstance(m, nn.BatchNorm2d) or isinstance(m, nn.BatchNorm1d):
+                if hasattr(m.weight, 'data'):
+                    m.weight.data.clamp_(min=0.01)
+        x = self.xnor(x)
+        x = x.view(x.size(0), 10)
+        return x
+
+
+class Net_vanilla(nn.Module):
+    def __init__(self):
+        super(Net_vanilla, self).__init__()
+        self.xnor = nn.Sequential(
+                nn.Conv2d(3, 192, kernel_size=5, stride=1, padding=2),
+                nn.BatchNorm2d(192, eps=1e-4, momentum=0.1, affine=False),
+                nn.ReLU(inplace=True),
+                VaConv2d(192, 160, kernel_size=1, stride=1, padding=0),
+                VaConv2d(160,  96, kernel_size=1, stride=1, padding=0),
+                nn.MaxPool2d(kernel_size=3, stride=2, padding=1),
+
+                VaConv2d( 96, 192, kernel_size=5, stride=1, padding=2, dropout=0.5),
+                VaConv2d(192, 192, kernel_size=1, stride=1, padding=0),
+                VaConv2d(192, 192, kernel_size=1, stride=1, padding=0),
+                nn.AvgPool2d(kernel_size=3, stride=2, padding=1),
+
+                VaConv2d(192, 192, kernel_size=3, stride=1, padding=1, dropout=0.5),
+                VaConv2d(192, 192, kernel_size=1, stride=1, padding=0),
                 nn.BatchNorm2d(192, eps=1e-4, momentum=0.1, affine=False),
                 nn.Conv2d(192,  10, kernel_size=1, stride=1, padding=0),
                 nn.ReLU(inplace=True),

@@ -33,7 +33,11 @@ def train(epoch):
     for batch_idx, (data, target) in enumerate(trainloader):
         
         # forwarding
-        data, target = Variable(data.cuda()), Variable(target.cuda())
+        if torch.cuda.is_available():
+            data = data.cuda()
+            target = target.cuda()
+
+        data, target = Variable(data), Variable(target)
         optimizer.zero_grad()
         output = model(data)
         
@@ -55,8 +59,9 @@ def test():
     test_loss = 0
     correct = 0
     for data, target in testloader:
-        data, target = Variable(data.cuda()), Variable(target.cuda())
-                                    
+        if torch.cuda.is_available():
+            data, target = data.cuda(), target.cuda()
+        data, target = Variable(data), Variable(target)
         output = model(data)
         test_loss += criterion(output, target).data.item()
         pred = output.data.max(1, keepdim=True)[1]
@@ -84,12 +89,12 @@ def adjust_learning_rate(optimizer, epoch):
 if __name__=='__main__':
     # prepare the options
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cpu', action='store_true',
-            help='set if only CPU is available')
+    # parser.add_argument('--cpu', action='store_true',
+    #         help='set if only CPU is available')
     parser.add_argument('--data', action='store', default='./data/',
             help='dataset path')
-    parser.add_argument('--arch', action='store', default='nin',
-            help='the architecture for the network: nin')
+    parser.add_argument('--arch', action='store', default='nin_vanilla',
+            help='the architecture for the network: nin_vanilla')
     parser.add_argument('--lr', action='store', default='0.01',
             help='the intial learning rate')
     parser.add_argument('--pretrained', action='store', default=None,
@@ -139,6 +144,8 @@ if __name__=='__main__':
     print('==> building model',args.arch,'...')
     if args.arch == 'nin':
         model = nin.Net()
+    elif args.arch == 'nin_vanilla':
+        model = nin.Net_vanilla()
     else:
         raise Exception(args.arch+' is currently not supported')
 
@@ -156,7 +163,7 @@ if __name__=='__main__':
         best_acc = pretrained_model['best_acc']
         model.load_state_dict(pretrained_model['state_dict'])
 
-    if not args.cpu:
+    if torch.cuda.is_available():
         model.cuda()
         model = torch.nn.DataParallel(model, device_ids=range(torch.cuda.device_count()))
     print(model)

@@ -10,6 +10,8 @@ import data
 import util
 import torch.nn as nn
 import torch.optim as optim
+import torchvision
+from torchvision import transforms
 
 from models import nin
 from torch.autograd import Variable
@@ -29,11 +31,15 @@ def save_state(model, best_acc):
 def train(epoch):
     model.train()
     for batch_idx, (data, target) in enumerate(trainloader):
+        if torch.cuda.is_available():
+            data = data.cuda()
+            target = target.cuda()
+
         # process the weights including binarization
         bin_op.binarization()
         
         # forwarding
-        data, target = Variable(data.cuda()), Variable(target.cuda())
+        data, target = Variable(data), Variable(target)
         optimizer.zero_grad()
         output = model(data)
         
@@ -60,8 +66,10 @@ def test():
     correct = 0
     bin_op.binarization()
     for data, target in testloader:
-        data, target = Variable(data.cuda()), Variable(target.cuda())
-                                    
+        if torch.cuda.is_available():
+            data, target = data.cuda(), target.cuda()
+        data, target = Variable(data), Variable(target)
+
         output = model(data)
         test_loss += criterion(output, target).data.item()
         pred = output.data.max(1, keepdim=True)[1]
@@ -90,8 +98,6 @@ def adjust_learning_rate(optimizer, epoch):
 if __name__=='__main__':
     # prepare the options
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cpu', action='store_true',
-            help='set if only CPU is available')
     parser.add_argument('--data', action='store', default='./data/',
             help='dataset path')
     parser.add_argument('--arch', action='store', default='nin',
@@ -110,18 +116,27 @@ if __name__=='__main__':
     torch.cuda.manual_seed(1)
 
     # prepare the data
-    if not os.path.isfile(args.data+'/train_data'):
-        # check the data path
-        raise Exception\
-                ('Please assign the correct data path with --data <DATA_PATH>')
+    transform_train = transforms.Compose([
+        transforms.RandomCrop(32, padding=4),
+        transforms.RandomHorizontalFlip(),
+        transforms.ToTensor(),
+        transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
+    ])
 
-    trainset = data.dataset(root=args.data, train=True)
-    trainloader = torch.utils.data.DataLoader(trainset, batch_size=128,
-            shuffle=True, num_workers=2)
+    transform_test = transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010)),
+    ])
 
-    testset = data.dataset(root=args.data, train=False)
-    testloader = torch.utils.data.DataLoader(testset, batch_size=100,
-            shuffle=False, num_workers=2)
+    trainset = torchvision.datasets.CIFAR10(
+        root='./data', train=True, download=True, transform=transform_train)
+    trainloader = torch.utils.data.DataLoader(
+        trainset, batch_size=128, shuffle=True, num_workers=2)
+
+    testset = torchvision.datasets.CIFAR10(
+        root='./data', train=False, download=True, transform=transform_test)
+    testloader = torch.utils.data.DataLoader(
+        testset, batch_size=100, shuffle=False, num_workers=2)
 
     # define classes
     classes = ('plane', 'car', 'bird', 'cat',
@@ -148,7 +163,7 @@ if __name__=='__main__':
         best_acc = pretrained_model['best_acc']
         model.load_state_dict(pretrained_model['state_dict'])
 
-    if not args.cpu:
+    if torch.cuda.is_available():
         model.cuda()
         model = torch.nn.DataParallel(model, device_ids=range(torch.cuda.device_count()))
     print(model)
