@@ -72,6 +72,19 @@ $ python main.py --pretrained models/LeNet_5.best.pth.tar --evaluate
 | MNIST    | LeNet5              |                      |                   |
 | Cifar10  | ResNet18                |                      |                   |
 
+To track the runing time, you can use `timeit`. `pip intall timeit` if it has not been installed.
+```
+import timeit
+
+start = timeit.default_timer()
+
+#The module you try to calculate the running time
+
+stop = timeit.default_timer()
+
+print('Time: ', stop - start)
+```
+
 ### 3.2 Hyper-parameters
 
 Please show how the variations on number of channels and filter size will affect speedup.
