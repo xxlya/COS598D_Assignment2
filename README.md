@@ -87,6 +87,7 @@ $ python main_vanilla.py
 
 
 ***Compare Model Inference Time***
+
 Please save your final model after the whole training procedure and measure the inference time on the final model.
 | Dataset  | Network                  | Vanilla Net (floating-point)                   | XNOR-NET |
 |----------|:-------------------------|:----------------------------|:---------------------------|
