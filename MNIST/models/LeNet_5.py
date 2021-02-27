@@ -7,12 +7,13 @@ class BinActive(torch.autograd.Function):
     '''
     Binarize the input activations and calculate the mean across channel dimension.
     '''
+    @staticmethod
     def forward(self, input):
         self.save_for_backward(input)
         size = input.size()
         input = input.sign()
         return input
-
+    @staticmethod
     def backward(self, grad_output):
         input, = self.saved_tensors
         grad_input = grad_output.clone()
@@ -47,10 +48,10 @@ class BinConv2d(nn.Module): # change the name of BinConv2d
                 self.bn = nn.BatchNorm1d(input_channels, eps=1e-4, momentum=0.1, affine=True)
             self.linear = nn.Linear(input_channels, output_channels)
         self.relu = nn.ReLU(inplace=True)
-    
+
     def forward(self, x):
         x = self.bn(x)
-        x, mean = BinActive.apply(x)
+        x = BinActive.apply(x)
         if self.dropout_ratio!=0:
             x = self.dropout(x)
         if not self.Linear:
@@ -106,9 +107,9 @@ class LeNet_5_vanilla(nn.Module):
         self.bn_conv1 = nn.BatchNorm2d(20, eps=1e-4, momentum=0.1, affine=False)
         self.relu_conv1 = nn.ReLU(inplace=True)
         self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2)
-        self.conv2 = nn.Conv2d(20, 50, kernel_size=8, stride=1, padding=0)
+        self.conv2 = nn.Conv2d(20, 50, kernel_size=5, stride=1, padding=0)
         self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2)
-        self.ip1 = nn.Linear(50*1*1, 500)
+        self.ip1 = nn.Linear(50*4*4, 500)
         self.ip2 = nn.Linear(500, 10)
 
         for m in self.modules():
@@ -128,7 +129,7 @@ class LeNet_5_vanilla(nn.Module):
         x = self.pool1(x)
         x = self.conv2(x)
         x = self.pool2(x)
-        x = x.view(x.size(0), 50*1*1)
+        x = x.view(x.size(0), 50*4*4)
 
         x = self.ip1(x)
         x = self.ip2(x)
